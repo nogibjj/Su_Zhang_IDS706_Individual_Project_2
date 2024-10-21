@@ -1,3 +1,5 @@
+[![CI](https://github.com/nogibjj/Su_Zhang_IDS706_Week7/actions/workflows/rust.yml/badge.svg)](https://github.com/nogibjj/Su_Zhang_IDS706_Week7/actions/workflows/rust.yml)
+
 # Su Zhang IDS706 Project 7 - Rust Command Line
 
 ## Project Purpose

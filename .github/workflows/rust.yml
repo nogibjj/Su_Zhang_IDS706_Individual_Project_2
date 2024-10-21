@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      WORKING_DIR: new #the rust project name you are developing.
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: Check
+      run: cargo check
+      working-directory: ${{ env.WORKING_DIR }}
+
+    - name: Format
+      run: cargo fmt
+      working-directory: ${{ env.WORKING_DIR }}
+
+    - name: Test
+      run: cargo test
+      working-directory: ${{ env.WORKING_DIR }}
+
+    - name: Release
+      run: cargo build --release
+      working-directory: ${{ env.WORKING_DIR }}
+
+    - name: Upload Binary Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Su Zhang Week 7 Rust
+        path: ${{ env.WORKING_DIR }}/target/release/Su_Zhang_Week7_Rust

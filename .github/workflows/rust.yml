@@ -1,4 +1,4 @@
-name: CI
+name: Rust CI/CD Pipeline
 
 on:
   push:
@@ -37,5 +37,5 @@ jobs:
     - name: Upload Binary Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Su Zhang Week 7 Rust
-        path: target/release/Su_Zhang_IDS706_Week7
+        name: Su Zhang Individual Project 2
+        path: target/release/su_zhang_sqlite

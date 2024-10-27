@@ -29,30 +29,52 @@ def performance(func, *args):
     print(f"Memory Usage After: {end_memory:.2f} KB")
     print(f"Memory Consumed: {end_memory - start_memory:.2f} KB\n")
 
-    return result
+    return result, duration, start_memory, end_memory
 
 
 def main():
     url = "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/master/alcohol-consumption/drinks.csv"
     file_path = "data/drinks.csv"
 
+    # Initialize total time and memory variables
+    total_duration = 0
+    total_start_memory = (
+        psutil.Process().memory_info().rss / 1024
+    )  # Initial memory in KB
+
     print("Performance of `extract` function:")
-    performance(extract, url, file_path)
+    _, duration, _, _ = performance(extract, url, file_path)
+    total_duration += duration
 
     print("Performance of `load` function:")
-    performance(load, file_path)
+    _, duration, _, _ = performance(load, file_path)
+    total_duration += duration
 
     print("Performance of `create_data` function:")
-    performance(create_data)
+    _, duration, _, _ = performance(create_data)
+    total_duration += duration
 
     print("Performance of `read_data` function:")
-    performance(read_data)
+    _, duration, _, _ = performance(read_data)
+    total_duration += duration
 
     print("Performance of `update_data` function:")
-    performance(update_data)
+    _, duration, _, _ = performance(update_data)
+    total_duration += duration
 
     print("Performance of `delete_data` function:")
-    performance(delete_data)
+    _, duration, _, _ = performance(delete_data)
+    total_duration += duration
+
+    # Final memory usage
+    total_end_memory = psutil.Process().memory_info().rss / 1024  # Final memory in KB
+
+    # Calculate and print total performance
+    print("Total Performance Summary:")
+    print(f"Total Execution Time: {total_duration * 1000:.2f}ms")
+    print(f"Initial Memory Usage: {total_start_memory:.2f} KB")
+    print(f"Final Memory Usage: {total_end_memory:.2f} KB")
+    print(f"Total Memory Consumed: {total_end_memory - total_start_memory:.2f} KB")
 
 
 if __name__ == "__main__":

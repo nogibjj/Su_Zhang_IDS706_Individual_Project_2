@@ -118,7 +118,7 @@ where
 }
 
 
-#[tokio::main]
+#[tokio::main(flavor = "multi_thread")]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     
@@ -131,8 +131,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[tokio::test]
+    
+    #[tokio::test(flavor = "multi_thread")] // Specify multi-threaded runtime
     async fn test_run_main() {
         let args = Args {
             url: String::from("https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/master/alcohol-consumption/drinks.csv"),
@@ -140,8 +140,9 @@ mod tests {
             action: String::from("read"), // Set default action to "read" for the test
         };
 
-        let result = run_main(&args).await;
+        let result = run_main(&args).await; // Call the main logic
         println!("{:?}", result);
         assert!(result.is_ok(), "Expected Ok result, got Err: {:?}", result);
     }
 }
+

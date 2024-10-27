@@ -7,8 +7,14 @@
 
 This project is an integration between mini project #8 (Rewrite Python Script in Rust) and individual project #2 (Rust CLI Binary with SQLite). In this project, I present both Python and Rust implementation of an ETL (Extract, Transform, Load) and SQLite query process, which performs operations on an SQLite database, including extracting data from a source, loading it into the database, and providing CRUD (Create, Read, Update, Delete) functionalities. This project also includes time and memory usage tracking to evaluate the performance of Rust compared to an existing Python implementation.
 
+## Use of Github Copilot and Large Language Model
+In this poject, I have leveraged Github Copilot to help me rewrite my previous Python ETL-query script, but have also modified a lot on the translation and added command line parsing as well as time and memory tracking. In addition, I have used ChatGPT to help me debug and optimize the rust program.
+
 ## Youtube Demo Video Link 
-[Youtube Link]()
+[Youtube Link](https://youtu.be/oIvrwimx89o)
+
+## Rust Binary Artifact Download Link
+[Binary Artifact Link](https://github.com/nogibjj/Su_Zhang_IDS706_Individual_Project_2/actions/runs/11544066702/artifacts/2109752973)
 
 ## Objectives
 
@@ -75,6 +81,8 @@ SU_ZHANG_IDS706_Individual_Project_2/
 | **Update**          | 0.51 ms               | 16.31 ms            | 0.00 KB                 | 0 KB                 |
 | **Delete**          | 0.54 ms               | 16.91 ms            | 0.00 KB                 | 33 KB                |
 | **Total**           | 180.70 ms             | 465.48 ms           | 4992.00 KB              | 8503 KB              |
+
+Detailed performance report could be found here:[Performance Report Link](https://github.com/nogibjj/Su_Zhang_IDS706_Individual_Project_2/blob/main/performance_comparison.md)
 
 ## Build the Rust Project
 

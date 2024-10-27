@@ -1,18 +1,24 @@
-# Su Zhang IDS706 Individual Project #2
+[![Rust CI/CD Pipeline](https://github.com/nogibjj/Su_Zhang_IDS706_Individual_Project_2/actions/workflows/rust.yml/badge.svg)](https://github.com/nogibjj/Su_Zhang_IDS706_Individual_Project_2/actions/workflows/rust.yml)
+[![Python CI/CD Pipeline](https://github.com/nogibjj/Su_Zhang_IDS706_Individual_Project_2/actions/workflows/python.yml/badge.svg)](https://github.com/nogibjj/Su_Zhang_IDS706_Individual_Project_2/actions/workflows/python.yml)
+
+# Su Zhang IDS706 Individual Project #2 + Mini Project #8
 
 ## Project Overview
 
-This project presents both Python and Rust implementation of an ETL (Extract, Transform, Load) process, which performs operations on an SQLite database, including extracting data from a source, loading it into the database, and providing CRUD (Create, Read, Update, Delete) functionalities. This project also includes time and memory usage tracking to evaluate the performance of Rust compared to an existing Python implementation.
+This project is an integration between mini project #8 (Rewrite Python Script in Rust) and individual project #2 (Rust CLI Binary with SQLite). In this project, I present both Python and Rust implementation of an ETL (Extract, Transform, Load) and SQLite query process, which performs operations on an SQLite database, including extracting data from a source, loading it into the database, and providing CRUD (Create, Read, Update, Delete) functionalities. This project also includes time and memory usage tracking to evaluate the performance of Rust compared to an existing Python implementation.
+
+## Youtube Demo Video Link 
+[Youtube Link]()
 
 ## Objectives
 
-1. **Rewrite Python Scripts in Rust**: 
+1. **Rewrite Python Scripts in Rust [Mini Project#8]**: 
    - The primary goal of this project is to rewrite existing Python scripts that perform ETL operations in Rust. This enables us to explore Rust's performance capabilities and its handling of database operations.
 
-2. **Performance Comparison**: 
+2. **Performance Comparison [Mini Project#8]**: 
    - By measuring execution time and memory usage for both the Rust and Python implementations, we can compare their efficiencies in handling ETL processes.
 
-3. **Rust CLI Binary with SQLite**: 
+3. **Rust CLI Binary with SQLite [Individual Project#2]**: 
    - The project implements a command-line interface (CLI) in Rust that allows users to perform various operations on an SQLite database efficiently.
 
 ## Features
@@ -70,13 +76,13 @@ SU_ZHANG_IDS706_Individual_Project_2/
 | **Delete**          | 0.54 ms               | 16.91 ms            | 0.00 KB                 | 33 KB                |
 | **Total**           | 180.70 ms             | 465.48 ms           | 4992.00 KB              | 8503 KB              |
 
-## Build the Project
+## Build the Rust Project
 
 ```bash
 cargo build --release
 ```
 
-## Running the CLI
+## Running the Rust CLI
 
 To run the CLI binary, use the following command:
 
@@ -90,11 +96,20 @@ For default settings of data source (drinks.csv), could skip specifying url and 
 cargo run -- --action <create|read|update|delete>
 ```
 
+## Running Python Script
 
-**Example**:
+To run Python script on ETL-query, use the following command:
+
 ```bash
-cargo run -- --url "https://example.com/data.csv" --file_path "data/my_data.csv" --action create
+python main.py
 ```
+
+To test if the ETL-query is successfully completed, use the following command:
+
+```bash
+python test_main.py
+```
+
 
 ### Arguments
 
@@ -105,13 +120,11 @@ cargo run -- --url "https://example.com/data.csv" --file_path "data/my_data.csv"
 
 ## Conclusion
 
-In this project, we implemented an ETL process in both Python and Rust, measuring and comparing their performance in terms of execution time and memory usage.
+In this project, I implemented an ETL process in both Python and Rust, measuring and comparing their performance in terms of execution time and memory usage.
 
-- **Execution Time**: The total execution time for the Rust implementation (465.48 ms) was longer than the Python version (180.70 ms). This is likely due to the additional overhead associated with Rust's strict memory safety checks and the complexities of its ownership model.
+- **Execution Time**: The total execution time for the Rust implementation (465.48 ms) was longer than the Python version (180.70 ms). This is likely because for rust program, I added command line binary, which takes longer to compile than python script. 
   
 - **Memory Usage**: The Rust version consumed more memory overall (8503 KB) compared to the Python implementation (4992 KB). This difference may arise from Rust's management of data ownership, which can sometimes lead to higher memory usage during operations.
-
-- **Efficiency**: While Rust is designed for high performance and safety, its execution time was slower in this instance. This emphasizes that the effectiveness of a programming language can depend heavily on the specific use case and implementation details.
 
 Overall, this comparison highlights the strengths and weaknesses of both languages in handling ETL processes. Python's ease of use and mature libraries allowed for faster execution, while Rust's performance characteristics could provide advantages in more complex scenarios or when optimization is more critical.
 
